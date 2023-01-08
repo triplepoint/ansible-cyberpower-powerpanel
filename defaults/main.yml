@@ -1,0 +1,64 @@
+---
+
+# Enable the alarm when power fails?
+cyberpower_powerpanel_alarm: True
+
+# Hibernate the host instead of powering off?
+cyberpower_powerpanel_hibernate: False
+
+### Power Failure
+# Should the system respond to power failures?
+cyberpower_powerpanel_pwrfail_active: True
+
+# How long should we wait before responding, in seconds [0-3600]
+cyberpower_powerpanel_pwrfail_delay: 60
+
+# What command should be run? [full path]
+cyberpower_powerpanel_pwrfail_cmd: "/etc/pwrstatd-powerfail.sh"
+
+# How long does the command take to run in seconds, so that we give it time to run? [0-3600]
+cyberpower_powerpanel_pwrfail_duration: 0
+
+# Should we shut down the machine after the cmd power off timer expires?
+cyberpower_powerpanel_pwrfail_shutdown: True
+
+### Low Battery
+# Should the system respond to low battery states?
+cyberpower_powerpanel_lowbatt_active: True
+
+# At what estimated remaining runtime threshold should we respond in seconds? [0-3600]
+# NOTE: the response will come if _either_ the capacity or runtime thresholds are crossed.
+cyberpower_powerpanel_lowbatt_runtime: 300
+
+# At what remaining battery capacity threshold should we respond in percent? [0-90]
+# NOTE: the response will come if _either_ the capacity or runtime thresholds are crossed.
+cyberpower_powerpanel_lowbatt_capacity: 35
+
+# What command should be run? [full path]
+cyberpower_powerpanel_lowbatt_cmd: "/etc/pwrstatd-lowbatt.sh"
+
+# How long does the command take to run in seconds, so that we give it time to run? [0-3600]
+cyberpower_powerpanel_lowbatt_duration: 0
+
+# Should we shut down the machine after the cmd power off timer expires?
+cyberpower_powerpanel_lowbatt_shutdown: True
+
+### /etc/pwrstatd-powerfail.sh configuration fields
+# This script has some user-configurable fields which can be configured here.
+# Note that this does nothing if this script isn't used in the above
+# `cyberpower_powerpanel_pwrfail_cmd` field.
+cyberpower_powerpanel_powerfail_script_enable_email: False
+cyberpower_powerpanel_powerfail_script_receipt_name: "user name"
+cyberpower_powerpanel_powerfail_script_receipt_address: "user_name@company.com"
+cyberpower_powerpanel_powerfail_script_sender_address: "user_name@company.com"
+
+### /etc/pwrstatd-lowbatt.sh configuration fields
+# This script has some user-configurable fields which can be configured here.
+# Note that this does nothing if this script isn't used in the above
+# `cyberpower_powerpanel_lowbatt_cmd` field.
+cyberpower_powerpanel_lowbatt_script_enable_email: False
+cyberpower_powerpanel_lowbatt_script_receipt_name: "user name"
+cyberpower_powerpanel_lowbatt_script_receipt_address: "user_name@company.com"
+cyberpower_powerpanel_lowbatt_script_sender_address: "user_name@company.com"
+
+# NOTE - these notification scripts assume a working SMTP server for sending emails.

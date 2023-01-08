@@ -1,0 +1,72 @@
+---
+- name: Ensure the PowerPanel deb is installed
+  ansible.builtin.apt:
+    deb: https://dl4jz3rbrsfum.cloudfront.net/software/PPL_64bit_v1.4.1.deb
+
+# Power Fail script templating
+- name: Ensure the power fail handler script's ENABLE_EMAIL value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-powerfail.sh
+    regexp: '^ENABLE_EMAIL='
+    line: "ENABLE_EMAIL={{ 'yes' if cyberpower_powerpanel_powerfail_script_enable_email else 'no' }}"
+  notify: Restart powerpanel service
+
+- name: Ensure the power fail handler script's RECEIPT_NAME value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-powerfail.sh
+    regexp: '^RECEIPT_NAME='
+    line: "RECEIPT_NAME=\"{{ cyberpower_powerpanel_powerfail_script_receipt_name }}\""
+  notify: Restart powerpanel service
+
+- name: Ensure the power fail handler script's RECEIPT_ADDRESS value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-powerfail.sh
+    regexp: '^RECEIPT_ADDRESS='
+    line: "RECEIPT_ADDRESS={{ cyberpower_powerpanel_powerfail_script_receipt_address }}"
+  notify: Restart powerpanel service
+
+- name: Ensure the power fail handler script's SENDER_ADDRESS value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-powerfail.sh
+    regexp: '^SENDER_ADDRESS='
+    line: "SENDER_ADDRESS={{ cyberpower_powerpanel_powerfail_script_sender_address }}"
+  notify: Restart powerpanel service
+
+# Low battery script templating
+- name: Ensure the low battery handler script's ENABLE_EMAIL value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-lowbatt.sh
+    regexp: '^ENABLE_EMAIL='
+    line: "ENABLE_EMAIL={{ 'yes' if cyberpower_powerpanel_lowbatt_script_enable_email else 'no' }}"
+  notify: Restart powerpanel service
+
+- name: Ensure the low battery handler script's RECEIPT_NAME value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-lowbatt.sh
+    regexp: '^RECEIPT_NAME='
+    line: "RECEIPT_NAME=\"{{ cyberpower_powerpanel_lowbatt_script_receipt_name }}\""
+  notify: Restart powerpanel service
+
+- name: Ensure the low battery handler script's RECEIPT_ADDRESS value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-lowbatt.sh
+    regexp: '^RECEIPT_ADDRESS='
+    line: "RECEIPT_ADDRESS={{ cyberpower_powerpanel_lowbatt_script_receipt_address }}"
+  notify: Restart powerpanel service
+
+- name: Ensure the low battery handler script's SENDER_ADDRESS value is templated
+  ansible.builtin.lineinfile:
+    path: /etc/pwrstatd-lowbatt.sh
+    regexp: '^SENDER_ADDRESS='
+    line: "SENDER_ADDRESS={{ cyberpower_powerpanel_lowbatt_script_sender_address }}"
+  notify: Restart powerpanel service
+
+# Conf file templating
+- name: Ensure the PowerPanel config file is written
+  ansible.builtin.template:
+    src: pwrstatd.conf.j2
+    dest: /etc/pwrstatd.conf
+    mode: 0644
+    owner: root
+    group: root
+  notify: Restart powerpanel service

@@ -1,0 +1,5 @@
+---
+- name: Restart powerpanel service
+  ansible.builtin.service:
+    name: pwrstatd
+    state: restarted
