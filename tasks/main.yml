@@ -66,7 +66,7 @@
   ansible.builtin.template:
     src: pwrstatd.conf.j2
     dest: /etc/pwrstatd.conf
-    mode: 0644
+    mode: "0644"
     owner: root
     group: root
   notify: Restart powerpanel service
