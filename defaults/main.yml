@@ -1,14 +1,14 @@
 ---
 
 # Enable the alarm when power fails?
-cyberpower_powerpanel_alarm: True
+cyberpower_powerpanel_alarm: true
 
 # Hibernate the host instead of powering off?
-cyberpower_powerpanel_hibernate: False
+cyberpower_powerpanel_hibernate: false
 
 ### Power Failure
 # Should the system respond to power failures?
-cyberpower_powerpanel_pwrfail_active: True
+cyberpower_powerpanel_pwrfail_active: true
 
 # How long should we wait before responding, in seconds [0-3600]
 cyberpower_powerpanel_pwrfail_delay: 60
@@ -20,11 +20,11 @@ cyberpower_powerpanel_pwrfail_cmd: "/etc/pwrstatd-powerfail.sh"
 cyberpower_powerpanel_pwrfail_duration: 0
 
 # Should we shut down the machine after the cmd power off timer expires?
-cyberpower_powerpanel_pwrfail_shutdown: True
+cyberpower_powerpanel_pwrfail_shutdown: true
 
 ### Low Battery
 # Should the system respond to low battery states?
-cyberpower_powerpanel_lowbatt_active: True
+cyberpower_powerpanel_lowbatt_active: true
 
 # At what estimated remaining runtime threshold should we respond in seconds? [0-3600]
 # NOTE: the response will come if _either_ the capacity or runtime thresholds are crossed.
@@ -41,13 +41,13 @@ cyberpower_powerpanel_lowbatt_cmd: "/etc/pwrstatd-lowbatt.sh"
 cyberpower_powerpanel_lowbatt_duration: 0
 
 # Should we shut down the machine after the cmd power off timer expires?
-cyberpower_powerpanel_lowbatt_shutdown: True
+cyberpower_powerpanel_lowbatt_shutdown: true
 
 ### /etc/pwrstatd-powerfail.sh configuration fields
 # This script has some user-configurable fields which can be configured here.
 # Note that this does nothing if this script isn't used in the above
 # `cyberpower_powerpanel_pwrfail_cmd` field.
-cyberpower_powerpanel_powerfail_script_enable_email: False
+cyberpower_powerpanel_powerfail_script_enable_email: false
 cyberpower_powerpanel_powerfail_script_receipt_name: "user name"
 cyberpower_powerpanel_powerfail_script_receipt_address: "user_name@company.com"
 cyberpower_powerpanel_powerfail_script_sender_address: "user_name@company.com"
@@ -56,7 +56,7 @@ cyberpower_powerpanel_powerfail_script_sender_address: "user_name@company.com"
 # This script has some user-configurable fields which can be configured here.
 # Note that this does nothing if this script isn't used in the above
 # `cyberpower_powerpanel_lowbatt_cmd` field.
-cyberpower_powerpanel_lowbatt_script_enable_email: False
+cyberpower_powerpanel_lowbatt_script_enable_email: false
 cyberpower_powerpanel_lowbatt_script_receipt_name: "user name"
 cyberpower_powerpanel_lowbatt_script_receipt_address: "user_name@company.com"
 cyberpower_powerpanel_lowbatt_script_sender_address: "user_name@company.com"

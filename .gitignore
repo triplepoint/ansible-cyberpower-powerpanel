@@ -1,3 +1,8 @@
+### --- https://raw.githubusercontent.com/github/gitignore/77b8cdb81610386ec48504c204b10c3acd322ecd/Global/Ansible.gitignore
+*.retry
+.ansible/
+
+
 ### --- https://raw.githubusercontent.com/github/gitignore/master/Python.gitignore
 # Byte-compiled / optimized / DLL files
 __pycache__/
